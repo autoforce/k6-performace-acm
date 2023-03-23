@@ -2,7 +2,7 @@
 
 #  Framework de Performace 🚀
 
-Um framework de testes de performance é uma ferramenta essencial para garantir que um sistema possa suportar o volume de tráfego e a carga de trabalho necessária para operar com eficiência e eficácia. Esse tipo de ferramenta ajuda a avaliar a capacidade de um sistema, identificar gargalos de desempenho e ajustar a configuração para obter a melhor performance possível. 📊
+Um framework de testes de performance é uma ferramenta essencial para garantir que um sistema possa suportar o volume de tráfego e a carga de trabalho necessária para operar com eficiência e eficácia. Esse tipo de ferramenta ajuda a avaliar a capacidade de um sistema, identificar gargalos de desempenho e ajustar a configuração para obter a melhor performance possível! 📊
 
 Existem vários frameworks de testes de performance disponíveis no mercado, mas um dos mais populares é o k6. K6 é um framework de código aberto para testes de performance, desenvolvido com foco em simplicidade e facilidade de uso. Ele utiliza a linguagem de programação JavaScript, o que o torna acessível para desenvolvedores com experiência em desenvolvimento web. 📈
 
