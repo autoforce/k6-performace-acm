@@ -54,17 +54,18 @@ https://k6.io/docs/
 
 ## 🚀 Instalando o Projeto
 
+em construção
 
 
-## ☕ Usando Cypress AutoCommerce Institucional
+## ☕ Usando Perfomace Framework k6
 
-Para usar Cypress, siga estas etapas:
+Para usar framework de permofrmace, siga estas etapas:
 
 ```
+   > clone o repositório
    > npm i (instalar todas dependências)  <br> 
-   > npx cypress open (abre o cypress em modo GUI interativo para rodar as specs separadamente) <br>
-   > npx cypress run (roda todas as specs em ordem alfabética no modo headless -> grava vídeo pasta cypress/videos)<br>
-   > npx cypress run --spec caminhoDaSpec/ (roda apenas a spec em modo headless) 
+   > k6 run [nome da spec]
+   
 ```
 
 ## 🤝 Colaboradores
