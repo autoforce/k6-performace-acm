@@ -30,5 +30,5 @@ export default function () {
         'Status code 200': (r) => r.status === 200
     });
 
-    // sleep(1);
+    sleep(1);
 }

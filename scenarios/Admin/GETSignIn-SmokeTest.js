@@ -10,7 +10,7 @@ export const options = {
     insecureSkipTLSVerify: true,
     vus: 1,
     duration: '1m',
-    tresholds: {
+    thresholds: {
         http_req_failed: ['rate <0.01'],
         checks: ['rate > 0.99']
     }
