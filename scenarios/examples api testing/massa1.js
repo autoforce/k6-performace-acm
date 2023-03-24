@@ -5,9 +5,9 @@ import { check, sleep } from 'k6';
 //2
 export const options = {
     stages: [
-        {duration:'10s', target:'10'},
-        {duration:'10s', target:'10'},
-        {duration:'10s', target:'0'},
+        {duration:'10s', target:'10'},//ramp up
+        {duration:'10s', target:'10'},//carga nominal
+        {duration:'10s', target:'0'},//ramp down
     ],
     thresholds: {
         checks: ['rate > 0.95'],

@@ -29,13 +29,13 @@ export const options = {
         http_req_duration: ['p(95) < 500'],
         http_req_failed: ['rate < 0.01']
     }
-}
+};
 
 //3
 export default function () {
     const BASE_URL = 'https://test-api.k6.io';
-    const USER = `${Math.random()}@mail.com`
-    const PASS = 'user123'
+    const USER = `${Math.random()}@mail.com`;
+    const PASS = 'user123';
 
     console.log(`User: ${USER} | Senha:${PASS}`)
 
