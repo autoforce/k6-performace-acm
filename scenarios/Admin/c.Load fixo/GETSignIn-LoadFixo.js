@@ -2,8 +2,9 @@
 import http from 'k6/http';
 import { check } from 'k6';
 import { Rate } from 'k6/metrics';
-import {Counter} from 'k6/metrics';
-import {Trend} from 'k6/metrics';
+import { Counter } from 'k6/metrics';
+import { Trend } from 'k6/metrics';
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 //configuração
 export const options = {
@@ -31,4 +32,11 @@ export default function () {
     getStatusSucess.add(req.status === 200);
     getCounters.add(1);
     getWaiting.add(req.timings.waiting);
+}
+
+//desmontagem
+export function handleSummary(data) {
+    return {
+        "summary.html": htmlReport(data),
+    };
 }
