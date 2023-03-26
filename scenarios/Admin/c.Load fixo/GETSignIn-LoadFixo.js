@@ -8,7 +8,7 @@ import {Trend} from 'k6/metrics';
 //configuração
 export const options = {
     insecureSkipTLSVerify: true,
-    stages: [{ duration: '1m', target: 1 }],
+    stages: [{ duration: '20m', target: 100 }],
     thresholds: {
         http_req_failed: ['rate <0.01'],
         checks: ['rate > 0.99']

@@ -2,13 +2,17 @@
 import http from 'k6/http';
 import { check } from 'k6';
 import { Rate } from 'k6/metrics';
-import {Counter} from 'k6/metrics';
-import {Trend} from 'k6/metrics';
+import { Counter } from 'k6/metrics';
+import { Trend } from 'k6/metrics';
 
 //configuração
 export const options = {
     insecureSkipTLSVerify: true,
-    stages: [{ duration: '1m', target: 1 }],
+    stages: [
+        { duration: '5m', target: 100 },
+        { duration: '10m', target: 100 },
+        { duration: '5m', target: 0 }
+    ],
     thresholds: {
         http_req_failed: ['rate <0.01'],
         checks: ['rate > 0.99']
