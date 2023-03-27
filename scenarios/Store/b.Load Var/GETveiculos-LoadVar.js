@@ -41,7 +41,7 @@ export default function () {
 //desmontagem
 export function handleSummary(data) {
     return {
-        "summary.html": htmlReport(data),
+        "GETveiculosLoadVar.html": htmlReport(data),
     };
 }
 

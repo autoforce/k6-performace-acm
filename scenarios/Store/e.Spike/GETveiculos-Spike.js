@@ -1,18 +1,19 @@
 //1
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 //2
 export const options = {
     insecureSkipTLSVerify: true,
     stages: [
-        {duration: '10s', target: 100},
-        {duration: '1m', target: 100},
-        {duration: '10s', target: 1500},
-        {duration: '3m', target: 1500},
-        {duration: '10s', target: 100},
-        {duration: '3m', target: 100},
-        {duration: '10s', target: 0},
+        { duration: '10s', target: 100 },
+        { duration: '1m', target: 100 },
+        { duration: '10s', target: 1500 },
+        { duration: '3m', target: 1500 },
+        { duration: '10s', target: 100 },
+        { duration: '3m', target: 100 },
+        { duration: '10s', target: 0 },
     ],
     thresholds: {
         checks: ['rate > 0.95'],
@@ -30,3 +31,9 @@ export default function () {
     });
 }
 
+//desmontagem
+export function handleSummary(data) {
+    return {
+        "GETveiculoSpike.html": htmlReport(data),
+    };
+}

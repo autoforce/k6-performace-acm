@@ -37,7 +37,7 @@ export default function () {
 //desmontagem
 export function handleSummary(data) {
     return {
-        "summary.html": htmlReport(data),
+        "GETveiculosSmokeTest.html": htmlReport(data),
     };
 }
 
