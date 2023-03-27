@@ -9,7 +9,7 @@ import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporte
 //2
 export const options = {
     insecureSkipTLSVerify: true,
-    stages: [{ duration: '3s', target: 1 }],
+    stages: [{ duration: '1m', target: 1 }],
     thresholds: {
         checks: ['rate > 0.95'],
         http_req_failed: ['rate < 0.1']
