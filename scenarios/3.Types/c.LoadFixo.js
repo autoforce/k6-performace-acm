@@ -1,4 +1,5 @@
 export const options = {
-    vus: 100,
-    duration: '20m',
+    stages: [
+        { duration: '20m', target: 100 }
+    ]
 }
