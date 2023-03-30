@@ -25,6 +25,8 @@ export default function () {
     check(res, {
         'Veiculos carregados': (r) => r.status === 200
     });
+
+    sleep(1);
 }
 
 

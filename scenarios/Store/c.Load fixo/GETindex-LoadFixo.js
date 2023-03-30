@@ -38,6 +38,8 @@ export default function () {
     getStatusSucess.add(res.status === 200);
     getCounters.add(1);
     getWaiting.add(res.timings.waiting);
+
+    sleep(1);
 }
 
 

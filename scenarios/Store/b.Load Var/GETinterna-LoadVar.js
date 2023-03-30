@@ -12,7 +12,9 @@ import { SharedArray } from 'k6/data';
 export const options = {
     insecureSkipTLSVerify: true,
     stages: [
-        { duration: '1m', target: 1 },
+        { duration: '5m', target: 100 },//ramp up
+        { duration: '10m', target: 100 },//carga nominal
+        { duration: '5m', target: 0 }//ramp down
     ],
     thresholds: {
         http_req_failed: ['rate < 0.01'],
@@ -54,6 +56,6 @@ export default function () {
 //4
 export function handleSummary(data) {
     return {
-        "GETinternaSmokeTest.html": htmlReport(data),
+        "GETinternaLoadVar.html": htmlReport(data),
     };
 }
