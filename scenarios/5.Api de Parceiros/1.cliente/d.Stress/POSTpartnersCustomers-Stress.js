@@ -11,7 +11,16 @@ import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporte
 export const options = {
     insecureSkipTLSVerify: true,
     stages: [
-        { duration: '10s', target: 1 }
+        { duration: '2m', target: 100 },
+        { duration: '5m', target: 100 },
+        { duration: '2m', target: 200 },
+        { duration: '5m', target: 200 },
+        { duration: '2m', target: 300 },
+        { duration: '5m', target: 300 },
+        { duration: '5m', target: 400 },
+        { duration: '5m', target: 400 },
+        { duration: '10m', target: 0 },
+
     ],
     thresholds: {
         http_req_failed: ['rate < 0.1'],
@@ -67,10 +76,8 @@ export default function () {
     const bodyResponse = JSON.parse(res.body)
     const customerId = bodyResponse.id
 
-    
     //console log para alinhar
     console.log(`EmailCustomer: ${email}, CustomerId: ${customerId}, StatusCode: ${statusReq}`)
-    
 
     check(res, {
         'Criou o pedido com sucesso': (r) => r.status === 200
@@ -87,6 +94,6 @@ export default function () {
 //4
 export function handleSummary(data) {
     return {
-        "POSTcustomersApiParceiros-SmokeTest.html": htmlReport(data),
+        "POSTcustomersApiParceiros-Stress.html": htmlReport(data),
     };
 }
