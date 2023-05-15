@@ -33,12 +33,12 @@ const getWaiting = new Trend('Taxa de Espera');
 
 //3
 export default function () {
-    const BASE_URL = 'https://autodealer.ac-stage.com/veiculos/';
-    const veiculo = data[Math.floor(Math.random() * data.length)].slug;
-    const URL_SLUG = BASE_URL + veiculo
-    console.log(URL_SLUG)
+    const BASE_URL = 'http://autodealer.new.acmapp.work';
+    const slugVeiculo = `/veiculos/${data[Math.floor(Math.random() * data.length)].slug}`;
+    const URL_SLUG = BASE_URL + slugVeiculo
+    
     const res = http.get(URL_SLUG);
-
+    console.log(`${URL_SLUG} -> ${res.status}`)
     check(res, {
         'Status 200': (r) => r.status === 200
     });

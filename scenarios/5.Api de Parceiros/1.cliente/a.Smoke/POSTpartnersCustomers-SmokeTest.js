@@ -5,8 +5,7 @@ import { Rate } from 'k6/metrics';
 import { Counter } from 'k6/metrics';
 import { Trend } from 'k6/metrics';
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
-
-
+import { data } from 'k6';
 //2
 export const options = {
     insecureSkipTLSVerify: true,
@@ -21,19 +20,18 @@ export const options = {
 }
 
 const BASE_URL = 'https://ac-stage.com';
-
+const customerIds = [];
 //criando metricas
 const getStatusSucess = new Rate('Taxa req. 200');
 const getCounters = new Counter('Quantidade de Chamadas');
 const getWaiting = new Trend('Taxa de Espera');
 
-//3
+//lista customersIds
 export default function () {
     const name = "Teste Gabs";
     const cpf = "557.148.650-30";
     let randomInicioEmail = Math.floor((Math.random() * 10000000) + 1)
     let email = `${randomInicioEmail}@mailinator.com`;//unico
-
     const phone = "(11) 91234-5678";
     const zip_code = "05138-080";
     const state = "SP";
@@ -63,14 +61,17 @@ export default function () {
     }
 
     const res = http.post(`${BASE_URL}/api/v1/partners/customers`, JSON.stringify(user), { headers: headers });
-    const statusReq = res.status
-    const bodyResponse = JSON.parse(res.body)
-    const customerId = bodyResponse.id
+    const statusReq = res.status;
+    const bodyResponse = JSON.parse(res.body);
+    const customerId = bodyResponse.id;
 
-    
-    //console log para alinhar
+    //gravando no arquivo
+    let customerIds = data.customerIds || [];
+    customerIds.push(customerId);
+    data.customerIds = customerIds;
+
     console.log(`EmailCustomer: ${email}, CustomerId: ${customerId}, StatusCode: ${statusReq}`)
-    
+
 
     check(res, {
         'Criou o pedido com sucesso': (r) => r.status === 200
@@ -82,9 +83,21 @@ export default function () {
     getWaiting.add(res.timings.waiting);
 
     sleep(1);
+    // console.log(customerIds);
+    return customerIds;
 }
 
-//4
+export function arrayCustomerIds(customerIds) {
+    console.log(customerIds);
+}
+
+const ids = arrayCustomerIds();
+console.log(ids);
+
+// //3
+// const jsonString = JSON.stringify(customerIds);
+// console.log(customerIds)
+
 export function handleSummary(data) {
     return {
         "POSTcustomersApiParceiros-SmokeTest.html": htmlReport(data),

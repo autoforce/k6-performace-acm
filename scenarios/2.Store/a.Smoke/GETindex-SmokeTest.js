@@ -27,13 +27,14 @@ const getWaiting = new Trend('Tempo de Espera')
 
 //execução
 export default function () {
-    const BASE_URL = 'https://autodealer.ac-stage.com';
+    const BASE_URL = 'http://autodealer.new.acmapp.work/';
     const res = http.get(BASE_URL);
+   
 
     check(res, {
         'Index Carregada com Sucesso': (r) => r.status === 200
     });
-
+    console.log(`${BASE_URL} -> ${res.status}`)
     //validação métricas
     getStatusSucess.add(res.status === 200);
     getCounters.add(1);

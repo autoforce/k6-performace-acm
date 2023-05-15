@@ -1,19 +1,19 @@
 {
     "veiculos": [
         {
-            "slug": "cerato"
+            "slug": "chevrolet-prisma-116"
         },
         {
-            "slug": "chevrolet-onix-plus-4"
+            "slug": "ford-fiesta-91"
         },
         {
-            "slug": "kicks-26"
+            "slug": "ford-fusion"
         },
         {
-            "slug": "q3-4"
+            "slug": "jeep-compass-450"
         },
         {
-            "slug": "frontier-4"
+            "slug": "fiat-mobi-483"
         }
     ]
 }
