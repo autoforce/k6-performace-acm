@@ -3,7 +3,6 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
-
 //2 - configuracao
 export const options = {
     insecureSkipTLSVerify: true,
@@ -20,20 +19,16 @@ export const options = {
 
 //3 - execucao
 export default function () {
+
     const randomYear = Math.floor(Math.random() * 13) + 2010;
 
     const BASE_URL = 'http://autodealer.new.acmapp.work';
     const path = `/api/v1/vehicles/makes?year=${randomYear}`;
     const url = BASE_URL + path
-    
+
     const res = http.get(url);
-    const resBody = JSON.parse(res.body)
-    const indexRandomMake = Math.floor(Math.random() * resBody.length);
-    const randomMakeId = resBody[indexRandomMake].id
-    const randomMakeName = resBody[indexRandomMake].name
-    console.log(url)
-    console.log(randomMakeId)
-    console.log(randomMakeName)
+    const resBody = JSON.parse(res.body);
+    console.log(`${url} --> ${res.status}`);
 
     check(res, {
         'Marcas Carregadas': (r) => r.status === 200

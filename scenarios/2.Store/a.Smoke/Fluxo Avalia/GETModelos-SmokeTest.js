@@ -22,30 +22,18 @@ export const options = {
 const getCounters = new Counter('Quantidade de Chamadas');
 
 //3 - execucao
-export function getmarcas() {
-    const randomYear = Math.floor(Math.random() * 13) + 2010;
-
-    const BASE_URL = 'http://autodealer.new.acmapp.work';
-    const path = `/api/v1/vehicles/makes?year=${randomYear}`;
-    const url = BASE_URL + path
-
-    const res = http.get(url);
-    const resBody = res.body
-    return resBody
-};
-
-const marcas = getmarcas()
-
-export default function (marcas) {
+export default function () {
     
     const randomYear = Math.floor(Math.random() * 13) + 2010;
     const BASE_URL = 'http://autodealer.new.acmapp.work/api/v1/vehicles/';
-    const path = `models?year=${randomYear}&makeId=${1967}`//deixa dinamico de acordo com
-    const url = BASE_URL + path
+    const path = `models?year=${2013}&makeId=${1967}`;//deixa dinamico de acordo com
+    const url = BASE_URL + path;
 
-    const res = http.get(url)
-    console.log(url)
-    console.log(resBody)
+    const res = http.get(url);
+    const resStatus = res.status;
+    const resBody = res.body;
+    console.log(`${url} -> ${resStatus} -> ${resBody}`); 
+  
 
     check(res, {
         'Modelos Carregadas': (r) => r.status === 200
